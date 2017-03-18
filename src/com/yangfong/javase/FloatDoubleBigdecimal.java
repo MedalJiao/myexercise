@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * 验证浮点数
  * Created by Bruce.Jiao on 16-2-23.
  */
-public class FloatAndDouble {
+public class FloatDoubleBigdecimal {
     public static void main (String[] args) {
 //        accumulation();
 //

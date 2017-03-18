@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<struts>
+    <package name="mystruts" extends="struts-default">
+        <action name="login" class="com.yangfong.javase.LoginAction">
+            <result name="success" type="dispatcher">/login.jsp</result>
+            <result name="fail" type="dispatcher">/error.jsp</result>
+        </action>
+        <action name="logout" class="com.yangfong.javase.LoginAction">
+            <result name="success" type="dispatcher">/login.jsp</result>
+            <result name="fail" type="dispatcher">/error.jsp</result>
+        </action>
+    </package>
+</struts>
