@@ -8,6 +8,13 @@ public class UserInfo {
     private String loginName;
     private String password;
 
+    public UserInfo(){}
+
+    public UserInfo(String loginName, String password){
+        this.loginName = loginName;
+        this.password = password;
+    }
+
     public String getLoginName() {
         return loginName;
     }
