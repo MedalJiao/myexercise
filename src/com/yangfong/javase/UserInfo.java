@@ -30,4 +30,9 @@ public class UserInfo {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "当前对象字段值为：loginName = "+loginName+"; password = "+password;
+    }
 }
