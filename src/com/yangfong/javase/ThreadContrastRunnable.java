@@ -11,15 +11,17 @@ import org.junit.Test;
  * （3）使用Runnable实现的多线程，同一个实例可以多次传入Thread构造函数来启动新线程，从而达到多个线程共享同一个资源的目的，
  * 继承Thread实现的多线程实例，如果同一个实例多次调用start方法，会抛出异常java.lang.IllegalThreadStateException.
  *
- * 注意：juint测试时，有可能在线程没有执行完成时候测试完成，如果需要查看完整的打印可以用main方法来进行测试
+ * 注意：juint测试时，可能存在测试线程没有执行完成，但主线程已经运行完成的情况，导致控制台输出的数量并不是预期的数量，
+ * 如果需要查看完整的打印可以用main方法来进行测试
  * Created by Bruce.Jiao
  */
 public class ThreadContrastRunnable {
 
-/*    public static void main(String[] args) {
-        MyThread mt0 = new MyThread("A");
-        MyThread mt1 = new MyThread("B");
-        MyThread mt2 = new MyThread("C");
+   public static void main(String[] args) {
+        int total = 100;
+        MyThread mt0 = new MyThread(total, "A");
+        MyThread mt1 = new MyThread(total, "B");
+        MyThread mt2 = new MyThread(total, "C");
         mt0.start();
         mt1.start();
         mt2.start();
@@ -28,17 +30,18 @@ public class ThreadContrastRunnable {
         Thread t0 = new Thread(mr, "X");
         Thread t1 = new Thread(mr, "Y");
         Thread t2 = new Thread(mr, "Z");
-        t1.start();
-        t0.start();
-        t2.start();
+//        t1.start();
+//        t0.start();
+//        t2.start();
     }
-*/
+
 
     @Test
     public void testThread(){
-        MyThread mt0 = new MyThread("A");
-        MyThread mt1 = new MyThread("B");
-        MyThread mt2 = new MyThread("C");
+        int total = 100;
+        MyThread mt0 = new MyThread(total, "A");
+        MyThread mt1 = new MyThread(total, "B");
+        MyThread mt2 = new MyThread(total, "C");
         mt0.start();//一旦调用start方法，jvm会找到线程的run方法去执行
         mt1.start();
         mt2.start();//3个线程分别有一份资源，总共300次打印
@@ -57,10 +60,11 @@ public class ThreadContrastRunnable {
 
     private static class MyThread extends Thread{
 
-        private int total = 100;
+        private int total;
 
-        public MyThread(String name){
+        public MyThread(int total, String name){
             super(name);
+            this.total = total;
         }
 
         public void run() {

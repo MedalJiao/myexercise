@@ -1,11 +1,15 @@
 package com.yangfong.javase;
 
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
- * 8中基本数据类型的二进制表达式
+ * 8种基本数据类型的二进制表达式
  * Created by Bruce.Jiao on 17-2-23.
  */
 public class BasicDataToBinary {
@@ -18,6 +22,12 @@ public class BasicDataToBinary {
         getTheBinaryValue(0.75d);
     }
 
+    @Test
+    public void test(){
+        byte bt = -54;
+        Assert.assertEquals(202, byteToInt(bt));//-54补码二进制表示：11001010，取反加1
+    }
+
     public static byte[] intToByte4(int sum) {
         byte[] arr = new byte[4];
         arr[0] = (byte) (sum >> 24);
@@ -26,7 +36,11 @@ public class BasicDataToBinary {
         arr[3] = (byte) (sum & 0xff);
         return arr;
     }
-    
+
+    public static int byteToInt(byte bt) {
+        return bt & 0xff;
+    }
+
     private void getTheBinaryValue (Object value) {
         short s;
         int i = 0;
