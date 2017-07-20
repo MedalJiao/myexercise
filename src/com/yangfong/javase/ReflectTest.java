@@ -10,7 +10,7 @@ public class ReflectTest {
     @Test
     public void testReflect() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         //获取UserInfo类
-        Class clazz = Class.forName("../UserInfo");
+        Class clazz = Class.forName("com.yangfong.javase.UserInfo");
         //创建Class对象所所表示的类的一个实例，
         //newInstance默认调用了UserInfo的空构造
         Object o = clazz.newInstance();
